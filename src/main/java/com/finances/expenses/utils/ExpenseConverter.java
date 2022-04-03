@@ -1,6 +1,6 @@
 package com.finances.expenses.utils;
 
-import com.finances.expenses.ExpenseDto.ExpenseDto;
+import com.finances.expenses.dto.ExpenseDto;
 import com.finances.expenses.model.Account;
 import com.finances.expenses.model.Expense;
 

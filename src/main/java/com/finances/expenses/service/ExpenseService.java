@@ -1,6 +1,6 @@
 package com.finances.expenses.service;
 
-import com.finances.expenses.ExpenseDto.ExpenseDto;
+import com.finances.expenses.dto.ExpenseDto;
 
 public interface ExpenseService {
 

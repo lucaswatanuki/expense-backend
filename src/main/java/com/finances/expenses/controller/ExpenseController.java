@@ -1,6 +1,6 @@
 package com.finances.expenses.controller;
 
-import com.finances.expenses.ExpenseDto.ExpenseDto;
+import com.finances.expenses.dto.ExpenseDto;
 import com.finances.expenses.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
