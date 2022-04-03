@@ -1,6 +1,6 @@
 package com.finances.expenses.service;
 
-import com.finances.expenses.ExpenseDto.ExpenseDto;
+import com.finances.expenses.dto.ExpenseDto;
 import com.finances.expenses.model.Expense;
 import com.finances.expenses.repositories.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
