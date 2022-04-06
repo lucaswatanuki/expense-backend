@@ -1,7 +1,10 @@
 package com.finances.expenses.utils;
 
+import com.finances.expenses.dto.AccountDto;
+import com.finances.expenses.dto.CategoryDto;
 import com.finances.expenses.dto.ExpenseDto;
 import com.finances.expenses.model.Account;
+import com.finances.expenses.model.Category;
 import com.finances.expenses.model.Expense;
 
 import java.time.LocalDateTime;
@@ -24,20 +27,34 @@ public class ExpenseConverter {
         expense.setDescription(dto.getDescription());
         expense.setTotal(dto.getTotal());
         expense.setInstallment(dto.getInstallment());
-        expense.setAccount(mapToAccount(dto.getAccount()));
         return expense;
     }
 
-    public static ExpenseDto.AccountDto mapToAccountDto(Account account) {
-        return ExpenseDto.AccountDto.builder()
+    public static AccountDto mapToAccountDto(Account account) {
+        return AccountDto.builder()
                 .id(account.getId())
                 .name(account.getName())
                 .build();
     }
 
-    public static Account mapToAccount(ExpenseDto.AccountDto accountDto) {
+    public static Account mapToAccount(AccountDto accountDto) {
         return Account.builder()
                 .name(accountDto.getName())
                 .build();
     }
+
+    public static CategoryDto mapToCategoryDto(Category category) {
+        return CategoryDto.builder()
+                .id(category.getId())
+                .name(category.getName())
+                .build();
+    }
+
+    public static Category mapToCategory(CategoryDto categoryDto) {
+        return Category.builder()
+                .name(categoryDto.getName())
+                .build();
+    }
+
+
 }
