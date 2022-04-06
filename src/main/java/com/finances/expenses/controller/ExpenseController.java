@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/expenses")
 public class ExpenseController {
@@ -26,6 +28,11 @@ public class ExpenseController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<ExpenseDto> getExpense(@PathVariable String id) {
         return ResponseEntity.ok(expenseService.getExpense(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ExpenseDto>> getAll(@RequestParam(name = "account", required = false) String account) {
+        return ResponseEntity.ok(expenseService.getAllExpenses(account));
     }
 
     @DeleteMapping("/{id}")

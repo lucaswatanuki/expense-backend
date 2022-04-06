@@ -20,15 +20,4 @@ public class ExpenseDto {
     private BigDecimal total;
     private AccountDto account;
 
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    public static class AccountDto {
-        private String id;
-        private String name;
-        private String category;
-    }
 }
