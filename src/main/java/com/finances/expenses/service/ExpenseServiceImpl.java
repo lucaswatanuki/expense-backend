@@ -15,7 +15,7 @@ import java.util.List;
 import static com.finances.expenses.utils.ExpenseConverter.*;
 
 @Service
-public class ExpenseServiceImpl implements ExpenseService{
+public class ExpenseServiceImpl implements SimpleService<ExpenseDto> {
 
     private final ExpenseRepository expenseRepository;
     private final AccountRepository accountRepository;
@@ -27,8 +27,31 @@ public class ExpenseServiceImpl implements ExpenseService{
     }
 
     @Override
-    public void saveExpense(ExpenseDto dto) {
+    public ExpenseDto get(String id) {
+        final Expense expense = expenseRepository.findById(id).orElse(null);
 
+        if (expense != null) {
+            return mapToExpenseDto(expense);
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<ExpenseDto> getAll() {
+        List<Expense> expenseList = expenseRepository.findAll();
+
+        final List<ExpenseDto> res = new ArrayList<>();
+
+        expenseList.forEach(e -> {
+            res.add(mapToExpenseDto(e));
+        });
+
+        return res;
+    }
+
+    @Override
+    public void create(ExpenseDto dto) {
         final Expense expense = mapToExpense(dto);
         final Account account = mapToAccount(dto.getAccount());
 
@@ -42,40 +65,18 @@ public class ExpenseServiceImpl implements ExpenseService{
     }
 
     @Override
-    public ExpenseDto getExpense(String id) {
-        final Expense expense = expenseRepository.findById(id).orElse(null);
+    public void update(String id, ExpenseDto body) {
 
-        if (expense != null) {
-            return mapToExpenseDto(expense);
-        }
-
-        return null;
     }
 
     @Override
-    public List<ExpenseDto> getAllExpenses(String account) {
-        List<Expense> expenseList = expenseRepository.findAllByAccountName(account);
-
-        final List<ExpenseDto> res = new ArrayList<>();
-
-        expenseList.forEach(e -> {
-            res.add(mapToExpenseDto(e));
-        });
-
-        return res;
-    }
-
-
-    @Override
-    public void deleteExpense(String id) {
+    public void delete(String id) {
         expenseRepository.findById(id)
                 .ifPresent(expenseRepository::delete);
     }
 
     @Override
-    public void deleteAllExpenses() {
+    public void deleteAll() {
         expenseRepository.deleteAll();
     }
-
-
 }
