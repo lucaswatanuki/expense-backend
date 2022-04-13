@@ -9,7 +9,7 @@ import com.finances.expenses.model.Expense;
 
 import java.time.LocalDateTime;
 
-public class ExpenseConverter {
+public class Converter {
     public static ExpenseDto mapToExpenseDto(Expense expense) {
         return ExpenseDto.builder()
                 .id(expense.getId())
