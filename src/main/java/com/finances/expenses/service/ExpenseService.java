@@ -12,16 +12,16 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.finances.expenses.utils.ExpenseConverter.*;
+import static com.finances.expenses.utils.Converter.*;
 
 @Service
-public class ExpenseServiceImpl implements SimpleService<ExpenseDto> {
+public class ExpenseService implements SimpleService<ExpenseDto> {
 
     private final ExpenseRepository expenseRepository;
     private final AccountRepository accountRepository;
 
     @Autowired
-    public ExpenseServiceImpl(ExpenseRepository expenseRepository, AccountRepository accountRepository) {
+    public ExpenseService(ExpenseRepository expenseRepository, AccountRepository accountRepository) {
         this.expenseRepository = expenseRepository;
         this.accountRepository = accountRepository;
     }

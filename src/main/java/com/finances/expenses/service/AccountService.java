@@ -3,7 +3,7 @@ package com.finances.expenses.service;
 import com.finances.expenses.dto.AccountDto;
 import com.finances.expenses.model.Account;
 import com.finances.expenses.repositories.AccountRepository;
-import com.finances.expenses.utils.ExpenseConverter;
+import com.finances.expenses.utils.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AccountServiceImpl implements SimpleService<AccountDto> {
+public class AccountService implements SimpleService<AccountDto> {
 
     private final AccountRepository accountRepository;
 
     @Autowired
-    public AccountServiceImpl(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
@@ -30,7 +30,7 @@ public class AccountServiceImpl implements SimpleService<AccountDto> {
         final List<AccountDto> response = new ArrayList<>();
         List<Account> accounts = accountRepository.findAll();
         accounts.forEach(account -> {
-           response.add(ExpenseConverter.mapToAccountDto(account));
+           response.add(Converter.mapToAccountDto(account));
         });
 
         return response;
