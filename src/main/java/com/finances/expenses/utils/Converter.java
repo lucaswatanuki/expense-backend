@@ -7,8 +7,6 @@ import com.finances.expenses.model.Account;
 import com.finances.expenses.model.Category;
 import com.finances.expenses.model.Expense;
 
-import java.time.LocalDateTime;
-
 public class Converter {
     public static ExpenseDto mapToExpenseDto(Expense expense) {
         return ExpenseDto.builder()
@@ -23,7 +21,7 @@ public class Converter {
 
     public static Expense mapToExpense(ExpenseDto dto) {
         final Expense expense = new Expense();
-        expense.setDate(LocalDateTime.now());
+        expense.setDate(dto.getDate());
         expense.setDescription(dto.getDescription());
         expense.setTotal(dto.getTotal());
         expense.setInstallment(dto.getInstallment());

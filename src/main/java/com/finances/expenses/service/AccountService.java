@@ -30,20 +30,20 @@ public class AccountService implements SimpleService<AccountDto> {
         final List<AccountDto> response = new ArrayList<>();
         List<Account> accounts = accountRepository.findAll();
         accounts.forEach(account -> {
-           response.add(Converter.mapToAccountDto(account));
+            response.add(Converter.mapToAccountDto(account));
         });
 
         return response;
     }
 
     @Override
-    public void create(AccountDto dto) {
-
+    public AccountDto create(AccountDto dto) {
+        return null;
     }
 
     @Override
-    public void update(String id, AccountDto dto) {
-
+    public AccountDto update(String id, AccountDto dto) {
+        return null;
     }
 
     @Override

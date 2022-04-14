@@ -6,8 +6,8 @@ public interface SimpleService<T> {
 
     T get(String id);
     List<T> getAll();
-    void create(T body);
-    void update(String id, T body);
+    T create(T body);
+    T update(String id, T body);
     void delete(String id);
     void deleteAll();
 

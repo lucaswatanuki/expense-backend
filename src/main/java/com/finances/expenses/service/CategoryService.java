@@ -36,16 +36,19 @@ public class CategoryService implements SimpleService<CategoryDto> {
     }
 
     @Override
-    public void create(CategoryDto body) {
+    public CategoryDto create(CategoryDto body) {
         categoryRepository.save(Converter.mapToCategory(body));
+        return null;
     }
 
     @Override
-    public void update(String id, CategoryDto body) {
+    public CategoryDto update(String id, CategoryDto body) {
         categoryRepository.findById(id)
                 .ifPresent(category -> categoryRepository.save(Converter.mapToCategory(body).toBuilder()
                         .id(category.getId())
                         .build()));
+
+        return null;
     }
 
     @Override

@@ -25,16 +25,14 @@ public abstract class SimpleController<T> {
     }
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody T dto) {
-        service.create(dto);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<T> create(@RequestBody T dto) {
+        return ResponseEntity.ok(service.create(dto));
     }
 
     @PutMapping
-    public ResponseEntity<Void> update(@PathVariable("id") String id,
+    public ResponseEntity<T> update(@PathVariable("id") String id,
                                        @RequestBody T dto) {
-        service.update(id, dto);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(service.update(id, dto));
     }
 
     @DeleteMapping("/{id}")
