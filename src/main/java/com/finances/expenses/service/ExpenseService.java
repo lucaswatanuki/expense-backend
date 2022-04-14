@@ -51,7 +51,7 @@ public class ExpenseService implements SimpleService<ExpenseDto> {
     }
 
     @Override
-    public void create(ExpenseDto dto) {
+    public ExpenseDto create(ExpenseDto dto) {
         final Expense expense = mapToExpense(dto);
         final Account account = mapToAccount(dto.getAccount());
 
@@ -61,12 +61,16 @@ public class ExpenseService implements SimpleService<ExpenseDto> {
         accountRepository.insert(account);
         expense.setAccount(account);
 
-        expenseRepository.insert(expense);
+        String expenseId = expenseRepository.insert(expense).getId();
+
+        return dto.toBuilder()
+                .id(expenseId)
+                .build();
     }
 
     @Override
-    public void update(String id, ExpenseDto body) {
-
+    public ExpenseDto update(String id, ExpenseDto body) {
+        return null;
     }
 
     @Override
